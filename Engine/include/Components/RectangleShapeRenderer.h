@@ -14,7 +14,9 @@ public:
     {
         color = _color;
     }
-
+    void SetPosition(const sf::Vector2f _pos) {
+        shape->setPosition(_pos);
+    }
     void Render(sf::RenderWindow* _window) override;
     void OnDebug() override;
 

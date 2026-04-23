@@ -19,3 +19,4 @@ Demo::DemoScene::DemoScene(): Scene("DemoScene")
 
     CreateGameObject("TileSpawner")->CreateComponent<TileSpawner>();
 }
+    
