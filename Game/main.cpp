@@ -2,6 +2,7 @@
 #include "SceneModule.h"
 #include "Scenes/Demo/DemoScene.h"
 #include "Scenes/Tetris/TetrisScene.h"
+#include "BulletHelScene.h"
 
 int main(const int _argc, const char** _argv)
 {
@@ -9,7 +10,7 @@ int main(const int _argc, const char** _argv)
 
     engine->Init(_argc, _argv);
 
-    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<Tetris::TetrisScene>();
+    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<BulletHell::BulletHelScene>();
 
     engine->Run();
 

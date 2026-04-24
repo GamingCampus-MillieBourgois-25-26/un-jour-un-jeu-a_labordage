@@ -95,20 +95,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BulletHelScene.cpp" />
+    <ClCompile Include="include\BulletHell\Enemy.cpp" />
+    <ClCompile Include="include\BulletHell\Bullet.cpp" />
     <ClCompile Include="include\Tetris\Grille.cpp" />
     <ClCompile Include="include\Demo\Tile.cpp" />
     <ClCompile Include="include\Demo\TileSpawner.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="include\Tetris\Pièce.cpp" />
+    <ClCompile Include="include\BulletHell\Player.cpp" />
     <ClCompile Include="Scenes\Demo\DemoScene.cpp" />
     <ClCompile Include="Scenes\Tetris\TetrisScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BulletHelScene.h" />
+    <ClInclude Include="include\BulletHell\Enemy.h" />
+    <ClInclude Include="include\BulletHell\Bullet.h" />
     <ClInclude Include="include\Tetris\Grille.h" />
     <ClInclude Include="include\Demo\Player.h" />
     <ClInclude Include="include\Demo\Tile.h" />
     <ClInclude Include="include\Demo\TileSpawner.h" />
     <ClInclude Include="include\Tetris\Pièce.h" />
+    <ClInclude Include="include\BulletHell\Player.h" />
     <ClInclude Include="Scenes\Demo\DemoScene.h" />
     <ClInclude Include="Scenes\Tetris\TetrisScene.h" />
   </ItemGroup>
