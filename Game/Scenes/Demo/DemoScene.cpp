@@ -15,6 +15,5 @@
 #include "Demo/TileCounter.h"
 #include "Demo/TileSpawner.h"
 
-Demo::DemoScene::DemoScene() : Scene("demo") {
 
-}
+
