@@ -12,6 +12,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\Runner\CollisionManager.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
       <ForcedIncludeFiles />
@@ -21,6 +22,7 @@
     <ClCompile Include="include\Demo\TileSpawner.cpp" />
   </ItemGroup>
   <ItemGroup Label="Demo">
+    <ClInclude Include="include\Runner\CollisionManager.h" />
     <ClInclude Include="include\Demo\TileCounter.h" />
     <ClInclude Include="include\Demo\TileSpawner.h" />
     <ClInclude Include="include\pch.h" />
@@ -115,6 +117,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\BulletHell\Bullet.cpp" />
+    <ClCompile Include="include\Runner\Player.cpp" />
     <ClCompile Include="Scenes\Runner\RunnerScene.cpp" />
     <ClCompile Include="Scenes\BulletHell\BulletScene.cpp" />
     <ClCompile Include="include\Demo\Tile.cpp" />
@@ -128,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\BulletHell\Bullet.h" />
+    <ClInclude Include="include\Runner\Player.h" />
     <ClInclude Include="Scenes\Runner\RunnerScene.h" />
     <ClInclude Include="Scenes\BulletHell\BulletScene.h" />
     <ClInclude Include="include\Demo\Bullet.h" />
