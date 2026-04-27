@@ -15,7 +15,7 @@ void Runner::CollisionManager::Start()
 
 void Runner::CollisionManager::Update(float deltatime)
 {
-
+	float prevVelocityY = velocity.y;
 	player = GetOwner();
 
 	p = player->GetComponent<Player>();
@@ -31,9 +31,20 @@ void Runner::CollisionManager::Update(float deltatime)
 
 	/*	player->SetPosition(position);*/
 
+	if (prevVelocityY < 0.f && velocity.y >= 0.f) {
+		isBackflipping = true;
+	}
+
+	if (isBackflipping) {
+		currentRotation += backflipSpeed * deltatime;
+		player->SetRotation(sf::degrees(currentRotation));
+	}
 
 	if (isOnGround) {
 		velocity.y = 0;
+		isBackflipping = false;
+		currentRotation = 0.f;
+		player->SetRotation(sf::degrees(0.f));
 	}
 	if (!isOnGround) {
 		p->isJump = false;
@@ -44,6 +55,7 @@ void Runner::CollisionManager::Update(float deltatime)
 		isOnGround = true;
 
 	}
+	
 	else {
 		isOnGround = false;
 	}

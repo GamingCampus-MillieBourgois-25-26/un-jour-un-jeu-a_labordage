@@ -11,6 +11,9 @@ namespace Runner {
     class CollisionManager : public Component
     {
     public:
+        bool isBackflipping = false;
+        float currentRotation = 0.f;
+        const float backflipSpeed = 720.f;
         void Start() override;
         void Update(float deltatime) override;
 
@@ -26,6 +29,6 @@ namespace Runner {
         bool isOnGround = false;
 
         const float gravity = 500.f;
-        const float jumpForce = -300.f; // négatif car Y vers le bas en SFML
+        const float jumpForce = -600.f; // négatif car Y vers le bas en SFML
     };
 }

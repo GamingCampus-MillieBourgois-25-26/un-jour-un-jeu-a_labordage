@@ -10,6 +10,7 @@ namespace Runner{
 
 class Player : public Component
 {
+
 public:
     void Setspeed(float spee) { speed = spee; }
 
@@ -26,6 +27,7 @@ public:
         if (InputModule::GetKey(sf::Keyboard::Key::Space))
         {
             isJump = true;
+            
         }
         else isJump = false;
         
