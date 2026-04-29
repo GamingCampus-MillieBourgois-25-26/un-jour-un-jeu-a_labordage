@@ -36,6 +36,7 @@ void Runner::CollisionManager::Update(float deltatime)
 	}
 
 	if (isBackflipping) {
+		if(currentRotation <=360)
 		currentRotation += backflipSpeed * deltatime;
 		player->SetRotation(sf::degrees(currentRotation));
 	}

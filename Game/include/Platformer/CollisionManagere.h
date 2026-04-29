@@ -1,14 +1,15 @@
 #pragma once
 #include "Core/Component.h"
 #include "Maths/Vector2.h"
+#include <vector>
 
 class SquareCollider;
 class GameObject;
 
-namespace Runner {
-    class Player; // forward declaration, pas d'include
-
-    class CollisionManager : public Component
+namespace Platformer {
+    
+    class Playere;
+    class CollisionManagere : public Component
     {
     public:
         bool isBackflipping = false;
@@ -16,14 +17,15 @@ namespace Runner {
         const float backflipSpeed = 720.f;
         void Start() override;
         void Update(float deltatime) override;
-
+        std::vector<GameObject*> sol;
+     
     private:
         SquareCollider* my_collider = nullptr;
         SquareCollider* obj_collider = nullptr;
         GameObject* obj = nullptr;
-        Player* p = nullptr;
+        Playere* p = nullptr;
         GameObject* player;
-
+        
         Maths::Vector2f velocity;
         Maths::Vector2f position;
         bool isOnGround = false;

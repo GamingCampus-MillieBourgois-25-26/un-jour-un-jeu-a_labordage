@@ -20,7 +20,7 @@ Runner::RunnerScene::RunnerScene() : Scene("Scene courir") {
 
 	AssetsModule* asset = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
 
-	Texture* player_texture = asset->LoadAsset<Texture>("logo.png");
+	Texture* player_texture = asset->LoadAsset<Texture>("tanks_tankNavy1.png");
 
 	GameObject* player = CreateGameObject("player");
 	GameObject* obj = CreateGameObject("obj");
