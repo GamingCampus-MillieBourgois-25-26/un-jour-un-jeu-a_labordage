@@ -68,7 +68,7 @@ Platformer::Platformer::Platformer() : Scene("platformer") {
 
 
 
-GameObject Platformer::Platformer::CreateGround(Maths::Vector2<float> position, Maths::Vector2<float> size) {
+GameObject* Platformer::Platformer::CreateGround(Maths::Vector2<float> position, Maths::Vector2<float> size) {
 
 
 
@@ -80,6 +80,6 @@ GameObject Platformer::Platformer::CreateGround(Maths::Vector2<float> position, 
 	SquareCollider* coll = ground->CreateComponent<SquareCollider>();
 	coll->SetSize(size);
 
-	return *ground;
+	return ground;
 }
 

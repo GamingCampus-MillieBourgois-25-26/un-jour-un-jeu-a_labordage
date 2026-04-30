@@ -92,6 +92,7 @@ void Platformer::CollisionManagere::Update(float deltatime)
 		velocity.y = jumpForce;
 	}
 	player->SetPosition(position);
+	sol.clear();
 }
 
 

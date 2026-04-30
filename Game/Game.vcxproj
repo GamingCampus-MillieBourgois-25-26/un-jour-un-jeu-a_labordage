@@ -17,22 +17,20 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
       <ForcedIncludeFiles />
     </ClCompile>
-    <ClCompile Include="main.cpp" />
   </ItemGroup>
 
   <ItemGroup Label="Demo">
     <ClCompile Include="include\Demo\Tile.cpp" />
     <ClCompile Include="include\Demo\TileSpawner.cpp" />
-    <ClCompile Include="Scenes\Demo\DemoScene.cpp" />
   </ItemGroup>
 
   <ItemGroup Label="Demo">
-    <ClInclude Include="include\Demo\Player.h" />
-    <ClInclude Include="include\Demo\Tile.h" />
+
+   
     <ClInclude Include="include\Demo\TileCounter.h" />
     <ClInclude Include="include\Demo\TileSpawner.h" />
     <ClInclude Include="include\pch.h" />
-    <ClInclude Include="Scenes\Demo\DemoScene.h" />
+   
   </ItemGroup>
 
   <ItemGroup>
@@ -44,20 +42,10 @@
   <ItemGroup>
     <ClCompile Include="include\Platformer\CollisionManagere.cpp" />
     <ClCompile Include="include\Runner\CollisionManager.cpp" />
-    <ClCompile Include="pch.cpp">
-      <PrecompiledHeader>Create</PrecompiledHeader>
-      <ForcedIncludeFiles />
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup Label="Demo">
-    <ClCompile Include="include\Demo\TileSpawner.cpp" />
   </ItemGroup>
   <ItemGroup Label="Demo">
     <ClInclude Include="include\Platformer\CollisionManagere.h" />
     <ClInclude Include="include\Runner\CollisionManager.h" />
-    <ClInclude Include="include\Demo\TileCounter.h" />
-    <ClInclude Include="include\Demo\TileSpawner.h" />
-    <ClInclude Include="include\pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
@@ -73,7 +61,7 @@
     <ProjectName>Game</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+
 
   <PropertyGroup Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -115,7 +103,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerWorkingDirectory>$(SolutionDir)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+
 
   <PropertyGroup>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
@@ -169,7 +157,6 @@
     <ClCompile Include="include\Platformer\Playere.cpp" />
     <ClCompile Include="Scenes\Platformer\Platformer.cpp" />
     <ClCompile Include="Scenes\BulletHell\BulletScene.cpp" />
-    <ClCompile Include="include\Demo\Tile.cpp" />
     <ClCompile Include="include\Tetris\Shapes.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="include\Demo\Mechant.cpp" />
