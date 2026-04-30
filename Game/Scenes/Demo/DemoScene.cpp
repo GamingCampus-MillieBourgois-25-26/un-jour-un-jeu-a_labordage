@@ -13,6 +13,11 @@
 #include "Demo/Player.h"
 #include "Demo/TileCounter.h"
 #include "Demo/TileSpawner.h"
+#include "WindowModule.h"
+#include "Demo/Tile.h"
+#include "Demo/player.h"
+#include "Demo/Mechant.h"
+
 
 Demo::DemoScene::DemoScene(): Scene("DemoScene")
 {
@@ -34,3 +39,7 @@ Demo::DemoScene::DemoScene(): Scene("DemoScene")
     tile_spawner->CreateComponent<TileCounter>();
     tile_spawner->SetPosition({200, 0});
 }
+
+
+
+
