@@ -14,7 +14,7 @@ namespace Platformer {
     public:
 
         Maths::Vector2<float> positione;
-
+        Maths::Vector2f velocity;
         
 
         void Setspeed(float spee) { speed = spee; }
@@ -43,13 +43,13 @@ namespace Platformer {
 
             if (InputModule::GetKey(sf::Keyboard::Key::D))
             {
-                positione.x += speed * _delta_time;
+                positione.x += velocity.x + speed * _delta_time;
                 right = true;
             }
             else right = false;
             if (InputModule::GetKey(sf::Keyboard::Key::Q))
             {
-                positione.x -= speed * _delta_time;
+                positione.x -= velocity.x + speed * _delta_time;
                 left = true;
             }
             else left = false;
@@ -64,7 +64,7 @@ namespace Platformer {
                 Engine::GetInstance()->RequestQuit();
             }
         }
-        float speed = 100.f;
+        float speed = 200.f;
 
     };
 

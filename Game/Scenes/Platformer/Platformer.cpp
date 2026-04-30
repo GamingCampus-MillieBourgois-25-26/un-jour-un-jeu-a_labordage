@@ -22,8 +22,7 @@ Platformer::Platformer::Platformer() : Scene("platformer") {
 
 	GameObject* player = CreateGameObject("player");
 	GameObject* obj = CreateGameObject("obj");
-	GameObject* obj2 = CreateGameObject("obj");
-	GameObject* obj3 = CreateGameObject("obj");
+
 	
 
 
@@ -44,25 +43,12 @@ Platformer::Platformer::Platformer() : Scene("platformer") {
 	coll->SetSize(Maths::Vector2f(800, 20));
 
 
-
-	RectangleShapeRenderer* rec1 = obj2->CreateComponent<RectangleShapeRenderer>();
-	obj2->SetPosition(Maths::Vector2f(100, 450));
-	rec1->SetSize(Maths::Vector2f(50, 20));
-	rec1->SetColor(sf::Color::Red);
-	SquareCollider* coll1 = obj2->CreateComponent<SquareCollider>();
-	coll1->SetSize(Maths::Vector2f(50, 20));
 	
-	RectangleShapeRenderer* rec3 = obj3->CreateComponent<RectangleShapeRenderer>();
-	obj3->SetPosition(Maths::Vector2f(150, 450));
-	rec3->SetSize(Maths::Vector2f(50, 20));
-	rec3->SetColor(sf::Color::Red);
-	SquareCollider* coll3 = obj3->CreateComponent<SquareCollider>();
-	coll1->SetSize(Maths::Vector2f(50, 20));
-	CreateGround({ 50,450 }, { 50,50 });
-	CreateGround({ 50,400 }, { 50,50 });
-	CreateGround({ 100,400 }, { 50,50 });
-	CreateGround({ 150,400 }, { 50,50 });
-	CreateGround({ 200,400 }, { 50,50 });
+	CreateGround({ 50,350 }, { 50,50 });
+	CreateGround({ 150,350 }, { 50,50 });
+	CreateGround({ 250,350 }, { 50,50 });
+	CreateGround({ 350,350 }, { 50,50 });
+	CreateGround({ 450,350 }, { 50,50 });
 
 }
 

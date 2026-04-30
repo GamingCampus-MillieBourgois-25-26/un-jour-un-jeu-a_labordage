@@ -16,7 +16,7 @@ int main(const int _argc, const char** _argv)
     engine->GetModuleManager()->GetModule<SceneModule>()->RegisterSceneCreationFunction<Demo::DemoScene>();
     engine->GetModuleManager()->GetModule<SceneModule>()->RegisterSceneCreationFunction<Platformer::Platformer>();
 
-    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<Demo::DemoScene>();
+    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<Platformer::Platformer>();
     
     
     engine->Run();
