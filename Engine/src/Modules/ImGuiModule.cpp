@@ -1,7 +1,7 @@
 #include "Modules/ImGuiModule.h"
 
-#include <imgui-SFML.h>
-#include <imgui.h>
+#include <ImGui/imgui.h>
+#include <ImGui-SFML/imgui-SFML.h>
 
 #include <SFML/Window/Event.hpp>
 
@@ -9,6 +9,8 @@
 #include "ModuleManager.h"
 
 #include "Modules/InputModule.h"
+#include "Modules/SceneModule.h"
+#include "Modules/TimeModule.h"
 #include "Modules/WindowModule.h"
 
 void ImGuiModule::Awake()
@@ -91,6 +93,8 @@ void ImGuiModule::DisplayDebugWindow()
     DisplayGameObjectAsSelected(*selectedGameObject);
 
     ImGui::End();
+
+    DisplayRegisteredSceneList();
 }
 
 void ImGuiModule::DisplayScenesList()
@@ -103,6 +107,24 @@ void ImGuiModule::DisplayScenesList()
     }
 }
 
+void ImGuiModule::DisplayRegisteredSceneList() const
+{
+    const auto& scene_module = moduleManager->GetModule<SceneModule>();
+    const auto& scene_types = scene_module->GetRegisteredSceneTypes();
+
+    ImGui::Begin("Scenes List");
+
+    for (auto&& scene_type : scene_types)
+    {
+        if (ImGui::Button(scene_type.name()))
+        {
+            sceneModule->SetSceneById(scene_type);
+        }
+    }
+
+    ImGui::End();
+}
+
 void ImGuiModule::DisplayGameObjectsList(const Scene& _scene)
 {
     constexpr ImGuiTreeNodeFlags base_flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
@@ -112,7 +134,9 @@ void ImGuiModule::DisplayGameObjectsList(const Scene& _scene)
         const auto& game_objects = _scene.GetGameObjects();
         for (const auto& game_object : game_objects)
         {
+            ImGui::PushID(&game_object);
             DisplayGameObjectItem(*game_object);
+            ImGui::PopID();
         }
     }
 }
