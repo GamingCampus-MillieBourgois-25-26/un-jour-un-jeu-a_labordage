@@ -58,28 +58,10 @@ Platformer::Platformer::Platformer() : Scene("platformer") {
 	rec3->SetColor(sf::Color::Red);
 	SquareCollider* coll3 = obj3->CreateComponent<SquareCollider>();
 	coll1->SetSize(Maths::Vector2f(50, 20));
-	CreateGround({ 50,450 }, { 50,50 });
-	CreateGround({ 50,400 }, { 50,50 });
-	CreateGround({ 100,400 }, { 50,50 });
-	CreateGround({ 150,400 }, { 50,50 });
-	CreateGround({ 200,400 }, { 50,50 });
+	
 
 }
 
 
 
-GameObject Platformer::Platformer::CreateGround(Maths::Vector2<float> position, Maths::Vector2<float> size) {
-
-
-
-	GameObject* ground = CreateGameObject("obj");
-	ground->SetPosition(position);
-	RectangleShapeRenderer* rec = ground->CreateComponent<RectangleShapeRenderer>();
-	rec->SetSize(size);
-	rec->SetColor(sf::Color::Red);
-	SquareCollider* coll = ground->CreateComponent<SquareCollider>();
-	coll->SetSize(size);
-
-	return *ground;
-}
 

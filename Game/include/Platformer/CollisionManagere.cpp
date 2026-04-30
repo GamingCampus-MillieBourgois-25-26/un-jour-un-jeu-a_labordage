@@ -29,7 +29,7 @@ void Platformer::CollisionManagere::Update(float deltatime)
 	position.y += velocity.y * deltatime;
 	position.x = p->positione.x;
 
-	/*	player->SetPosition(position);*/
+	
 	for (const auto& go : GetOwner()->GetScene()->GetGameObjects()) {
 		if (go->GetName() == "obj") {
 			sol.push_back(go.get());
@@ -92,6 +92,7 @@ void Platformer::CollisionManagere::Update(float deltatime)
 		velocity.y = jumpForce;
 	}
 	player->SetPosition(position);
+	sol.clear();
 }
 
 

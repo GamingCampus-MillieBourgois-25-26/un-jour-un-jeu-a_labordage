@@ -18,6 +18,7 @@
     <ClCompile Include="Scenes\Platformer\Platformer.cpp" />
     <ClCompile Include="include\Platformer\Playere.cpp" />
     <ClCompile Include="include\Platformer\CollisionManagere.cpp" />
+    <ClCompile Include="include\Platformer\Level.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Demo\TileCounter.h" />
@@ -39,6 +40,7 @@
     <ClInclude Include="Scenes\Platformer\Platformer.h" />
     <ClInclude Include="include\Platformer\Playere.h" />
     <ClInclude Include="include\Platformer\CollisionManagere.h" />
+    <ClInclude Include="include\Platformer\Level.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

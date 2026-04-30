@@ -1,5 +1,7 @@
 #pragma once
 #include "Core/Component.h"
+#include "Maths/Vector2.h"
+#include "GameObject.h"
 
 namespace Demon {
 	class Bullet : public Component {
