@@ -22,8 +22,7 @@ Platformer::Platformer::Platformer() : Scene("platformer") {
 
 	GameObject* player = CreateGameObject("player");
 	GameObject* obj = CreateGameObject("obj");
-	GameObject* obj2 = CreateGameObject("obj");
-	GameObject* obj3 = CreateGameObject("obj");
+
 	
 
 

@@ -26,7 +26,7 @@ namespace Platformer {
         Playere* p = nullptr;
         GameObject* player;
         
-        Maths::Vector2f velocity;
+       
         Maths::Vector2f position;
         bool isOnGround = false;
 

@@ -12,10 +12,10 @@ void Platformer::CollisionManagere::Start()
 {
 
 }
-
+float prevVelocityY;
 void Platformer::CollisionManagere::Update(float deltatime)
 {
-	float prevVelocityY = velocity.y;
+	if(p != nullptr)  prevVelocityY = p->velocity.y;
 	player = GetOwner();
 
 	p = player->GetComponent<Playere>();
@@ -25,8 +25,9 @@ void Platformer::CollisionManagere::Update(float deltatime)
 	obj = GetOwner()->GetScene()->FindGameObject("obj");
 
 	obj_collider = obj->GetComponent<SquareCollider>();
-	velocity.y += gravity * deltatime;
-	position.y += velocity.y * deltatime;
+	p->velocity.y += gravity * deltatime;
+	
+	position.y += p->velocity.y * deltatime;
 	position.x = p->positione.x;
 
 	
@@ -41,18 +42,46 @@ void Platformer::CollisionManagere::Update(float deltatime)
 	for (const auto& sole : sol) {
 		SquareCollider* sole_collider = sole->GetComponent<SquareCollider>();
 		if (SquareCollider::IsColliding(*my_collider, *sole_collider)) {
-			if (velocity.y > 0) { 
+			if (GetOwner()->GetPosition().GetY() - sole_collider->GetOwner()->GetPosition().GetY() <= 0){
+
+
+			if (p->velocity.y > 0) { 
 				isOnGround = true;
-				position.y = sole->GetPosition().y - ((sole_collider->GetHeight()/2) + (my_collider->GetHeight()/3.f));
+				p->velocity.y = 0;
 					 
 					
 				
 			}
-			
+			}
+		
+			else if (GetOwner()->GetPosition().GetX() - sole_collider->GetOwner()->GetPosition().GetX() <= 0) {
+				
+					
+					
+
+					
+						p->positione.x -= 1;
+					
+
+
+				
+			}
+			else if (GetOwner()->GetPosition().GetX() - sole_collider->GetOwner()->GetPosition().GetX() >= 0) {
+
+				
+
+
+
+				p->positione.x += 1;
+
+
+
+
+			}
 		}
 	}
-
-	if (prevVelocityY < 0.f && velocity.y >= 0.f) {
+	std::cout << p->velocity.x << std::endl;
+	if (prevVelocityY < 0.f && p->velocity.y >= 0.f) {
 		isBackflipping = true;
 	}
 
@@ -72,7 +101,7 @@ void Platformer::CollisionManagere::Update(float deltatime)
 	}
 
 	if (isOnGround) {
-		velocity.y = 0;
+		p->velocity.y = 0;
 		isBackflipping = false;
 		currentRotation = 0.f;
 		
@@ -89,7 +118,7 @@ void Platformer::CollisionManagere::Update(float deltatime)
 		isOnGround = false;
 	}
 	if (p->isJump) {
-		velocity.y = jumpForce;
+		p->velocity.y = jumpForce;
 	}
 	player->SetPosition(position);
 	sol.clear();
