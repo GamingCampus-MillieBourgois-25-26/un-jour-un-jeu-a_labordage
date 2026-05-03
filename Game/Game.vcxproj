@@ -178,6 +178,7 @@
     <ClInclude Include="include\BulletHell\Bullet.h" />
     <ClInclude Include="include\Runner\Player.h" />
     <ClInclude Include="include\Platformer\Playere.h" />
+    <ClInclude Include="include\Platformer\Level.h" />
     <ClInclude Include="Scenes\M_Tetris\M_TetrisScene.h" />
     <ClInclude Include="Scenes\Platformer\Platformer.h" />
     <ClInclude Include="Scenes\BulletHell\BulletScene.h" />

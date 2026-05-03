@@ -18,6 +18,26 @@
     <ClCompile Include="Scenes\Tetris\TetrisScene.cpp" />
     <ClCompile Include="include\BulletHell\Shooter.cpp" />
     <ClCompile Include="WaveManager.cpp" />
+    <ClCompile Include="include\Runner\Player.cpp" />
+    <ClCompile Include="include\Runner\CollisionManager.cpp" />
+    <ClCompile Include="Scenes\Platformer\Platformer.cpp" />
+    <ClCompile Include="include\Platformer\Playere.cpp" />
+    <ClCompile Include="include\Platformer\CollisionManagere.cpp" />
+    <ClCompile Include="include\Platformer\Level.cpp" />
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+
+    <Filter Include="Demo" />
     <ClCompile Include="Scenes\M_BulletHell\BulletHelScene.cpp" />
     <ClCompile Include="include\M_BulletHell\B_Player.cpp" />
     <ClCompile Include="include\M_BulletHell\Enemy.cpp" />
@@ -55,6 +75,37 @@
     <ClInclude Include="Scenes\Tetris\TetrisScene.h" />
     <ClInclude Include="include\BulletHell\Shooter.h" />
     <ClInclude Include="WaveManager.h" />
+    <ClInclude Include="include\Runner\Player.h" />
+    <ClInclude Include="include\Runner\CollisionManager.h" />
+    <ClInclude Include="Scenes\Platformer\Platformer.h" />
+    <ClInclude Include="include\Platformer\Playere.h" />
+    <ClInclude Include="include\Platformer\CollisionManagere.h" />
+    <ClInclude Include="include\Platformer\Level.h" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClInclude Include="include\Demo\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Demo\Tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\Demo\DemoScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Demo\Mechant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Demo\Bullet.h">
+    <ClCompile Include="include\Demo\*">
+      <Filter>Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Demo\*">
+      <Filter>Demo</Filter>
+    </ClCompile>
     <ClInclude Include="Scenes\M_BulletHell\BulletHelScene.h" />
     <ClInclude Include="include\M_BulletHell\B_Player.h" />
     <ClInclude Include="include\M_BulletHell\Enemy.h" />
