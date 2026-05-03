@@ -2,10 +2,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="include\Demo\TileSpawner.cpp" />
-    <ClCompile Include="include\BulletHell\Bullet.cpp" />
-    <ClCompile Include="Scenes\BulletHell\BulletScene.cpp" />
     <ClCompile Include="include\Demo\Tile.cpp" />
+    <ClCompile Include="include\Demo\TileSpawner.cpp" />
+    <ClCompile Include="include\Platformer\CollisionManagere.cpp" />
+    <ClCompile Include="include\Runner\CollisionManager.cpp" />
+    <ClCompile Include="include\BulletHell\Bullet.cpp" />
+    <ClCompile Include="include\Runner\Player.cpp" />
+    <ClCompile Include="include\Platformer\Playere.cpp" />
+    <ClCompile Include="Scenes\Platformer\Platformer.cpp" />
+    <ClCompile Include="Scenes\BulletHell\BulletScene.cpp" />
     <ClCompile Include="include\Tetris\Shapes.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="include\Demo\Mechant.cpp" />
@@ -13,47 +18,21 @@
     <ClCompile Include="Scenes\Tetris\TetrisScene.cpp" />
     <ClCompile Include="include\BulletHell\Shooter.cpp" />
     <ClCompile Include="WaveManager.cpp" />
-    <ClCompile Include="include\Runner\Player.cpp" />
-    <ClCompile Include="include\Runner\CollisionManager.cpp" />
-    <ClCompile Include="Scenes\Platformer\Platformer.cpp" />
-    <ClCompile Include="include\Platformer\Playere.cpp" />
-    <ClCompile Include="include\Platformer\CollisionManagere.cpp" />
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-
-    <Filter Include="Demo" />
+    <ClCompile Include="Scenes\M_BulletHell\BulletHelScene.cpp" />
+    <ClCompile Include="include\M_BulletHell\Player.cpp" />
+    <ClCompile Include="include\M_BulletHell\Enemy.cpp" />
+    <ClCompile Include="include\M_BulletHell\Bullets.cpp" />
   </ItemGroup>
-
   <ItemGroup>
-    <ClCompile Include="*.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\Demo\Tile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenes\Demo\DemoScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\Demo\Mechant.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WaveManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClInclude Include="include\Demo\TileCounter.h" />
     <ClInclude Include="include\Demo\TileSpawner.h" />
     <ClInclude Include="include\pch.h" />
+    <ClInclude Include="include\Platformer\CollisionManagere.h" />
+    <ClInclude Include="include\Runner\CollisionManager.h" />
     <ClInclude Include="include\BulletHell\Bullet.h" />
+    <ClInclude Include="include\Runner\Player.h" />
+    <ClInclude Include="include\Platformer\Playere.h" />
+    <ClInclude Include="Scenes\Platformer\Platformer.h" />
     <ClInclude Include="Scenes\BulletHell\BulletScene.h" />
     <ClInclude Include="include\Demo\Bullet.h" />
     <ClInclude Include="include\Demo\Player.h" />
@@ -64,44 +43,12 @@
     <ClInclude Include="Scenes\Tetris\TetrisScene.h" />
     <ClInclude Include="include\BulletHell\Shooter.h" />
     <ClInclude Include="WaveManager.h" />
-    <ClInclude Include="include\Runner\Player.h" />
-    <ClInclude Include="include\Runner\CollisionManager.h" />
-    <ClInclude Include="Scenes\Platformer\Platformer.h" />
-    <ClInclude Include="include\Platformer\Playere.h" />
-    <ClInclude Include="include\Platformer\CollisionManagere.h" />
+    <ClInclude Include="Scenes\M_BulletHell\BulletHelScene.h" />
+    <ClInclude Include="include\M_BulletHell\Player.h" />
+    <ClInclude Include="include\M_BulletHell\Enemy.h" />
+    <ClInclude Include="include\M_BulletHell\Bullets.h" />
   </ItemGroup>
-
   <ItemGroup>
-    <ClInclude Include="include\Demo\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Demo\Tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scenes\Demo\DemoScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Demo\Mechant.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WaveManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Demo\Bullet.h">
-    <ClCompile Include="include\Demo\*">
-      <Filter>Demo</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\Demo\*">
-      <Filter>Demo</Filter>
-    </ClCompile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ClInclude Include="include\*.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\*.inl">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

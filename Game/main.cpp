@@ -5,6 +5,7 @@
 #include "Scenes/BulletHell/BulletScene.h"
 #include "Scenes/Runner/RunnerScene.h"
 #include "Scenes/Platformer/Platformer.h"
+#include "Scenes/M_BulletHell/BulletHelScene.h"
 #include "iostream"
 
 int main(const int _argc, const char** _argv)
@@ -18,7 +19,7 @@ int main(const int _argc, const char** _argv)
 
     engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<Platformer::Platformer>();
     
-    
+    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<M_BulletHell::BulletHelScene>();
     engine->Run();
 
     return 0;
