@@ -3,25 +3,31 @@
 template <typename T>
 Scene* SceneModule::SetScene()
 {
-    nextFrameScene = CreateScene<T>();
+    DeleteAllScenes();
+    nextFrameScene = CreateSceneAdditive<T>();
     return nextFrameScene;
 }
 
 template <typename SceneType> requires IsScene<SceneType>
-SceneType* SceneModule::CreateScene()
+SceneType* SceneModule::CreateSceneAdditive()
 {
     auto scene = std::make_unique<SceneType>();
-    SceneType* rawPtr = scene.get();
+    SceneType* raw_ptr = scene.get();
+
+    scene->Awake();
+
+    scene->FlushPending();
+
     scenes.push_back(std::move(scene));
-    return rawPtr;
+    return raw_ptr;
 }
 
 template <typename SceneType> requires IsScene<SceneType>
 Scene* SceneModule::GetSceneByType() const
 {
-    for (auto scene : scenes)
+    for (const auto& scene : scenes)
     {
-        if (dynamic_cast<SceneType*>(scene))
+        if (dynamic_cast<SceneType*>(scene.get()))
         {
             return scene.get();
         }
@@ -32,14 +38,10 @@ Scene* SceneModule::GetSceneByType() const
     return nullptr;
 }
 
-template <typename SceneType> requires IsScene<SceneType>
-bool SceneModule::DeleteSceneByType()
+template<typename SceneType> requires IsScene<SceneType>
+void SceneModule::RegisterSceneCreationFunction()
 {
-    if (auto* scene = GetSceneByType<SceneType>())
-    {
-        scene->MarkForDeletion();
-        return true;
-    }
-
-    return false;
+    const std::type_index scene_type = typeid(SceneType);
+    std::function<Scene*()> scene_creation_function = [this]() { return SetScene<SceneType>(); };
+    sceneCreationFunctions.try_emplace(scene_type, scene_creation_function);
 }

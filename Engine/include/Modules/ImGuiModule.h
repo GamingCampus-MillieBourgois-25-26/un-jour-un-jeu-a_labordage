@@ -1,12 +1,17 @@
+
 #pragma once
 
 #include <filesystem>
 
 #include "EngineConfig.h"
 #include "Core/Module.h"
-#include "SceneModule.h"
-#include "TimeModule.h"
-#include "WindowModule.h"
+
+// Forward declarations — only pointers stored; Scene/GameObject used only as ref params in declarations
+class Scene;
+class GameObject;
+class SceneModule;
+class TimeModule;
+class WindowModule;
 
 class ImGuiModule final : public Module
 {
@@ -20,6 +25,8 @@ public:
 
     void DisplayDebugWindow();
     void DisplayScenesList();
+    void DisplayRegisteredSceneList() const;
+
     void DisplayGameObjectsList(const Scene& _scene);
     void DisplayGameObjectItem(const GameObject& _game_object);
 
@@ -37,3 +44,4 @@ private:
 protected:
     ~ImGuiModule() override = default;
 };
+

@@ -1,18 +1,8 @@
 #include "Modules/SceneModule.h"
 
-#include <ranges>
-
 #include "ModuleManager.h"
-
-SceneModule::SceneModule() : Module()
-{
-}
-
-SceneModule::~SceneModule()
-{
-    DeleteAllScenes();
-    DeleteMarkedScenes();
-}
+#include "Modules/TimeModule.h"
+#include "Modules/WindowModule.h"
 
 void SceneModule::Start()
 {
@@ -20,11 +10,6 @@ void SceneModule::Start()
 
     timeModule = moduleManager->GetModule<TimeModule>();
     windowModule = moduleManager->GetModule<WindowModule>();
-
-    for (const auto& scene : scenes)
-    {
-        scene->Start();
-    }
 }
 
 void SceneModule::Render()
@@ -50,11 +35,6 @@ void SceneModule::Update()
 void SceneModule::Awake()
 {
     Module::Awake();
-
-    for (const auto& scene : scenes)
-    {
-        scene->Awake();
-    }
 }
 
 void SceneModule::Destroy()
@@ -75,6 +55,9 @@ void SceneModule::Finalize()
     {
         scene->Finalize();
     }
+
+    DeleteAllScenes();
+    DeleteMarkedScenes();
 }
 
 void SceneModule::OnDebug()
@@ -159,9 +142,19 @@ void SceneModule::Present()
     DeleteMarkedScenes();
 }
 
-const std::vector<std::unique_ptr<Scene>>& SceneModule::GetScenesList() const
+Scene* SceneModule::SetSceneById(const std::type_index& _type_index)
 {
-    return scenes;
+    const std::type_index scene_type_index(_type_index);
+
+    if (const auto it = sceneCreationFunctions.find(scene_type_index); it != sceneCreationFunctions.end())
+    {
+        const std::function<Scene*()>& scene_creation_func = it->second;
+        return scene_creation_func();
+    }
+
+    Logger::Log(ELogLevel::Warning, "Scene with type {} not found.", _type_index.name());
+
+    return nullptr;
 }
 
 Scene* SceneModule::GetSceneByName(const std::string& _scene_name) const
@@ -181,6 +174,11 @@ Scene* SceneModule::GetSceneByName(const std::string& _scene_name) const
     return nullptr;
 }
 
+const std::vector<std::unique_ptr<Scene>>& SceneModule::GetScenesList() const
+{
+    return scenes;
+}
+
 bool SceneModule::DeleteSceneByName(const std::string& _scene_name) const
 {
     if (Scene* scene = GetSceneByName(_scene_name))
@@ -198,6 +196,12 @@ void SceneModule::DeleteAllScenes() const
     {
         scene->MarkForDeletion();
     }
+}
+
+std::vector<std::type_index> SceneModule::GetRegisteredSceneTypes() const
+{
+    auto type_indices = std::views::keys(sceneCreationFunctions);
+    return std::vector(type_indices.begin(), type_indices.end());
 }
 
 void SceneModule::DeleteMarkedScenes()

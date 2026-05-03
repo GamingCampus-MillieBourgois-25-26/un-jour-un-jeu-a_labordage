@@ -5,7 +5,6 @@
 
 #include "Core/GameObject.h"
 
-class GameObject;
 
 class Scene
 {
@@ -25,11 +24,13 @@ public:
     void PostRender() const;
     void Present();
 
+    void FlushPending();
+
     void OnEnable() const;
     void OnDisable() const;
 
     void Destroy() const;
-    void Finalize() const;
+    void Finalize();
 
     const std::string& GetName() const;
 
@@ -53,6 +54,8 @@ private:
 
     std::string name;
     std::vector<std::unique_ptr<GameObject>> gameObjects;
+
+    std::vector<std::unique_ptr<GameObject>> pendingGameObjects;
 
     bool enabled = true;
 
