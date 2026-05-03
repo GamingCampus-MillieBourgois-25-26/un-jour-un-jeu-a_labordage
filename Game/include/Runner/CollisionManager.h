@@ -6,7 +6,7 @@ class SquareCollider;
 class GameObject;
 
 namespace Runner {
-    class Player; // forward declaration, pas d'include
+    class Player; 
 
     class CollisionManager : public Component
     {
@@ -29,6 +29,6 @@ namespace Runner {
         bool isOnGround = false;
 
         const float gravity = 500.f;
-        const float jumpForce = -300.f; // négatif car Y vers le bas en SFML
+        const float jumpForce = -300.f; 
     };
 }

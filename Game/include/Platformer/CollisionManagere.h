@@ -18,6 +18,7 @@ namespace Platformer {
         void Start() override;
         void Update(float deltatime) override;
         std::vector<GameObject*> sol;
+        Maths::Vector2f position;
      
     private:
         SquareCollider* my_collider = nullptr;
@@ -27,10 +28,10 @@ namespace Platformer {
         GameObject* player;
         
        
-        Maths::Vector2f position;
+        
         bool isOnGround = false;
 
         const float gravity = 500.f;
-        const float jumpForce = -300.f; // négatif car Y vers le bas en SFML
+        const float jumpForce = -300.f; 
     };
 }

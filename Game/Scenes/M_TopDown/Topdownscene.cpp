@@ -16,7 +16,7 @@
 
 namespace
 {
-    // Helper : crée une bullet (utilisée pour player ET enemy)
+    
     void CreateBullet(Scene* _scene, const Maths::Vector2f& _pos, const Maths::Vector2f& _dir,
         M_TopDown::BulletOwner _owner, float _speed)
     {
@@ -30,7 +30,7 @@ namespace
         bullet->CreateComponent<SquareCollider>(sprite);
         bullet->CreateComponent<M_TopDown::Bullets>(_dir, _owner, _speed);
 
-        // Petit scale pour différencier visuellement (optionnel)
+        
         if (_owner == M_TopDown::BulletOwner::Player)
             bullet->SetScale({ 0.5f, 0.5f });
         else
@@ -43,7 +43,7 @@ M_TopDown::TopDownScene::TopDownScene() : Scene("TopDown")
     AssetsModule* assets = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
     Texture* texture = assets->LoadAsset<Texture>("fish_red.png");
 
-    // --- Player ---
+
     GameObject* player = CreateGameObject("Player");
     player->SetPosition({ 300.f, 450.f });
 
@@ -57,7 +57,7 @@ M_TopDown::TopDownScene::TopDownScene() : Scene("TopDown")
     player->CreateComponent<SquareCollider>(player_sprite);
     player->CreateComponent<CollisionManager>();
 
-    // --- Enemies ---
+   
     CreateEnemy({ 100.f, 100.f });
     CreateEnemy({ 300.f, 100.f });
     CreateEnemy({ 500.f, 100.f });
@@ -78,7 +78,7 @@ GameObject* M_TopDown::TopDownScene::CreateEnemy(const Maths::Vector2f& _positio
             CreateBullet(this, pos, dir, BulletOwner::Enemy, 350.f);
         };
 
-    // 1 bullet toutes les 3 secondes, premier tir après 1.5s
+    
     enemy->CreateComponent<Enemy>(enemy_spawn_fn, 3.f, 1.5f);
 
     SpriteRenderer* enemy_sprite = enemy->CreateComponent<SpriteRenderer>(texture);

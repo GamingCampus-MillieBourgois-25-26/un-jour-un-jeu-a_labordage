@@ -11,7 +11,7 @@ namespace Tetris
     {
         Component::Awake();
 
-        // --- Fond de grille (cases grises pour visualiser le board) ---
+      
         Scene* scene = GetOwner()->GetScene();
         for (int row = 0; row < ROWS; ++row)
         {
@@ -51,7 +51,7 @@ namespace Tetris
             }
             else
             {
-                // Hors-grille (top-out par exemple) : on supprime le bloc orphelin
+                
                 _blocks[i]->MarkForDeletion();
             }
         }
@@ -62,7 +62,7 @@ namespace Tetris
         int cleared = 0;
         for (int row = ROWS - 1; row >= 0; --row)
         {
-            // While : si plusieurs lignes consécutives sont complètes, le shift les ramène ici
+            
             while (IsRowComplete(row))
             {
                 RemoveRow(row);
@@ -83,7 +83,7 @@ namespace Tetris
 
     void Grid::RemoveRow(int _rowToRemove)
     {
-        // 1. Détruire les GameObjects de la ligne supprimée
+        
         for (int col = 0; col < COLS; ++col)
         {
             if (cells[_rowToRemove][col] != nullptr)
@@ -93,7 +93,7 @@ namespace Tetris
             }
         }
 
-        // 2. Décaler tout ce qui est au-dessus d'une ligne vers le bas
+        
         for (int row = _rowToRemove; row > 0; --row)
         {
             for (int col = 0; col < COLS; ++col)
@@ -104,7 +104,7 @@ namespace Tetris
             }
         }
 
-        // 3. Vider la ligne du haut
+       
         for (int col = 0; col < COLS; ++col)
             cells[0][col] = nullptr;
     }

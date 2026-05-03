@@ -3,10 +3,9 @@
 
 namespace Tetris
 {
-    // Chaque pièce est définie dans une "boîte" 4x4 (ou 3x3 / 2x2)
-    // Les offsets sont des (col, row) depuis le coin haut-gauche de la boîte
+   
     const PieceData TETROMINO_DATA[TETROMINO_COUNT] = {
-        // I-piece (cyan)
+        
         {
             sf::Color(0, 255, 255),
             {
@@ -16,7 +15,7 @@ namespace Tetris
                 { {1,0}, {1,1}, {1,2}, {1,3} }
             }
         },
-        // O-piece (jaune) - identique dans toutes les rotations
+        
         {
             sf::Color(255, 255, 0),
             {
@@ -26,7 +25,7 @@ namespace Tetris
                 { {1,0}, {2,0}, {1,1}, {2,1} }
             }
         },
-        // T-piece (violet)
+       
         {
             sf::Color(180, 60, 220),
             {
@@ -36,7 +35,7 @@ namespace Tetris
                 { {1,0}, {0,1}, {1,1}, {1,2} }
             }
         },
-        // L-piece (orange)
+        
         {
             sf::Color(255, 165, 0),
             {
@@ -46,7 +45,7 @@ namespace Tetris
                 { {0,0}, {1,0}, {1,1}, {1,2} }
             }
         },
-        // J-piece (bleu)
+        
         {
             sf::Color(40, 80, 255),
             {
@@ -56,7 +55,7 @@ namespace Tetris
                 { {1,0}, {1,1}, {0,2}, {1,2} }
             }
         },
-        // S-piece (vert)
+        
         {
             sf::Color(0, 220, 80),
             {
@@ -66,7 +65,7 @@ namespace Tetris
                 { {0,0}, {0,1}, {1,1}, {1,2} }
             }
         },
-        // Z-piece (rouge)
+        
         {
             sf::Color(240, 40, 40),
             {

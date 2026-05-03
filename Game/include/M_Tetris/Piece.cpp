@@ -18,12 +18,12 @@ namespace Tetris
     {
         Component::Awake();
 
-        // Position de spawn : centré en haut de la grille
+       
         col = (Grid::COLS / 2) - 2;
         row = 0;
         rotation = 0;
 
-        // Création des 4 blocs (1 GameObject par bloc)
+        
         Scene* scene = GetOwner()->GetScene();
         for (int i = 0; i < 4; ++i)
         {
@@ -75,7 +75,7 @@ namespace Tetris
 
         grid->PlaceBlocks(cells_pos, block_array);
 
-        // Plus de référence aux blocs côté Piece (la grille en a la garde)
+     
         for (int i = 0; i < 4; ++i) blocks[i] = nullptr;
 
         GetOwner()->MarkForDeletion();

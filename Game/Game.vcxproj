@@ -24,6 +24,10 @@
     <ClCompile Include="include\M_BulletHell\Enemy.cpp" />
     <ClCompile Include="include\M_BulletHell\B_Player.cpp" />
     <ClCompile Include="include\M_TopDown\T_Player.cpp" />
+    <ClCompile Include="include\Platformer\Level.cpp" />
+    <ClCompile Include="include\Platformer\PlatformerCamera.cpp" />
+    <ClCompile Include="include\Platformer\PlatformerLevel.cpp" />
+    <ClCompile Include="include\Runner\R_Level.cpp" />
     <ClCompile Include="Scenes\M_BulletHell\BulletHelScene.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -47,6 +51,9 @@
     <ClInclude Include="include\M_BulletHell\Enemy.h" />
     <ClInclude Include="include\M_BulletHell\B_Player.h" />
     <ClInclude Include="include\M_TopDown\T_Player.h" />
+    <ClInclude Include="include\Platformer\PlatformerCamera.h" />
+    <ClInclude Include="include\Platformer\PlatformerLevel.h" />
+    <ClInclude Include="include\Runner\R_Level.h" />
     <ClInclude Include="Scenes\M_BulletHell\BulletHelScene.h" />
     <ClInclude Include="include\Demo\TileCounter.h" />
     <ClInclude Include="include\Demo\TileSpawner.h" />

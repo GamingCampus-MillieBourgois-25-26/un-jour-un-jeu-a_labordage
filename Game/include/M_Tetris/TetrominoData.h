@@ -14,7 +14,7 @@ namespace Tetris
     struct PieceData
     {
         sf::Color color;
-        // [rotation][block index] = offset (col, row) depuis l'ancre de la pièce
+        
         Maths::Vector2i blocks[ROTATION_COUNT][BLOCKS_PER_PIECE];
     };
 

@@ -40,7 +40,6 @@ void Shooter::SpawnWave()
 
     const float angleStep = (2.f * std::numbers::pi_v<float>) / bulletsPerBurst;
 
-    // Décalage de la vague pour l'effet "vague sinusoïdale"
     const float waveOffset = wavesShot * (angleStep / 2.f);
 
     for (int i = 0; i < bulletsPerBurst; ++i)

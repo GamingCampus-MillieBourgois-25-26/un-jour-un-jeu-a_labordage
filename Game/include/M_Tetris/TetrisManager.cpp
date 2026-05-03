@@ -9,6 +9,7 @@
 #include "Core/GameObject.h"
 #include "InputModule.h"
 #include "Engine.h"
+#include "TextRenderer.h"
 
 #include <chrono>
 #include <iostream>
@@ -30,27 +31,65 @@ namespace Tetris
     void TetrisManager::Start()
     {
         Component::Start();
+        CreateUI();
+        UpdateScoreText();
         SpawnPiece();
+    }
+
+    void TetrisManager::CreateUI()
+    {
+        Scene* scene = GetOwner()->GetScene();
+
+     
+        GameObject* score_go = scene->CreateGameObject("UI_Timer");
+        score_go->SetPosition(Maths::Vector2f(5.f, 10.f));
+        scoreText = score_go->CreateComponent<TextRenderer>("Lignes : 0");
+        scoreText->SetCharacterSize(20);
+        scoreText->SetColor(sf::Color::White);
+
+        // Result au centre de l'écran
+        GameObject* result_go = scene->CreateGameObject("UI_Result");
+        result_go->SetPosition(Maths::Vector2f(160.f, 250.f));
+        resultText = result_go->CreateComponent<TextRenderer>("");
+        resultText->SetCharacterSize(40);
+    }
+
+    void TetrisManager::UpdateScoreText()
+    {
+        if (scoreText == nullptr) return;
+        scoreText->SetText("Lignes : " + std::to_string(totalLinesCleared));
+    }
+
+    void TetrisManager::EndGame(const std::string& _message, sf::Color _color)
+    {
+        gameOver = true;
+        if (resultText != nullptr)
+        {
+            resultText->SetText(_message + "\nLignes : " + std::to_string(totalLinesCleared));
+            resultText->SetColor(_color);
+        }
+        std::cout << "[Tetris] " << _message << " - Lignes : " << totalLinesCleared << std::endl;
     }
 
     void TetrisManager::Update(float _delta_time)
     {
         if (gameOver || grid == nullptr) return;
 
-        // La pièce courante a verrouillé / disparu : nettoyer les lignes + en spawn une nouvelle
         if (currentPiece == nullptr)
         {
             const int cleared = grid->ClearCompletedLines();
             if (cleared > 0)
-                std::cout << cleared << " ligne(s) cleared !" << std::endl;
-
+            {
+                totalLinesCleared += cleared;
+                UpdateScoreText();
+                std::cout << "[Tetris] " << cleared << " ligne(s) cleared !" << std::endl;
+            }
             SpawnPiece();
             return;
         }
 
         HandleInput();
 
-        // --- Gravité ---
         const bool soft_drop = InputModule::GetKey(sf::Keyboard::Key::S);
         const float interval = soft_drop ? softDropInterval : gravityInterval;
 
@@ -60,7 +99,6 @@ namespace Tetris
             gravityTimer = 0.f;
             if (!currentPiece->TryFall())
             {
-                // La pièce ne peut plus descendre : on la verrouille
                 currentPiece->Lock();
                 currentPiece = nullptr;
             }
@@ -80,10 +118,9 @@ namespace Tetris
         if (InputModule::GetKeyDown(sf::Keyboard::Key::Space))
             currentPiece->TryRotate(1);
 
-        // Hard drop avec Z : descend la pièce jusqu'à ce qu'elle bloque
         if (InputModule::GetKeyDown(sf::Keyboard::Key::Z))
         {
-            while (currentPiece->TryFall()) { /* descend tant que possible */ }
+            while (currentPiece->TryFall()) {  }
             currentPiece->Lock();
             currentPiece = nullptr;
         }
@@ -98,7 +135,6 @@ namespace Tetris
 
         const TetrominoType random_type = static_cast<TetrominoType>(RandomInt(0, TETROMINO_COUNT - 1));
 
-        // --- Game over check : la pièce peut-elle apparaître ? ---
         const PieceData& data = TETROMINO_DATA[static_cast<int>(random_type)];
         const int spawn_col = (Grid::COLS / 2) - 2;
         const int spawn_row = 0;
@@ -109,13 +145,11 @@ namespace Tetris
             const int r = spawn_row + data.blocks[0][i].y;
             if (!grid->IsInBounds(c, r) || !grid->IsCellEmpty(c, r))
             {
-                gameOver = true;
-                std::cout << "GAME OVER !" << std::endl;
+                EndGame("GAME OVER", sf::Color::Red);
                 return;
             }
         }
 
-        // --- Création effective de la pièce ---
         Scene* scene = GetOwner()->GetScene();
         GameObject* piece_go = scene->CreateGameObject("Piece");
         currentPiece = piece_go->CreateComponent<Piece>(random_type, grid);

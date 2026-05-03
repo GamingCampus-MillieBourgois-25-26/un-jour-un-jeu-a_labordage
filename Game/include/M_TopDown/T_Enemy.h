@@ -13,8 +13,7 @@ namespace M_TopDown
     public:
         using SpawnBulletFn = std::function<void(const Maths::Vector2f&, const Maths::Vector2f&)>;
 
-        // _fireInterval : temps entre 2 tirs (3s par défaut)
-        // _startupDelay : délai avant le 1er tir (utile pour pas tirer dès le spawn)
+    
         Enemy(SpawnBulletFn _spawnFn, float _fireInterval = 3.f, float _startupDelay = 1.f);
 
         void Update(float _delta_time) override;

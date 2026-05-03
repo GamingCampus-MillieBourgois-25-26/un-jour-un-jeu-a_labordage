@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "Platformer/CollisionManagere.h"
 
-// Tous les includes lourds ici, pas dans le .h
+
 #include "Core/Scene.h"
 #include "Core/GameObject.h"
 #include "SquareCollider.h"

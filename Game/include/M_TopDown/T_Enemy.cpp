@@ -13,7 +13,7 @@ void M_TopDown::Enemy::Update(float _delta_time)
 {
     if (dead) return;
 
-    // Petit délai initial pour ne pas tirer immédiatement
+   
     if (startupTimer < startupDelay)
     {
         startupTimer += _delta_time;
@@ -24,12 +24,10 @@ void M_TopDown::Enemy::Update(float _delta_time)
     if (fireTimer < fireInterval) return;
     fireTimer = 0.f;
 
-    // Trouver le player dans la scène
     GameObject* player = GetOwner()->GetScene()->FindGameObject("Player");
     if (player == nullptr || player->IsMarkedForDeletion())
         return;
 
-    // Direction = (player - enemy) normalisée
     const Maths::Vector2f my_pos = GetOwner()->GetPosition();
     const Maths::Vector2f player_pos = player->GetPosition();
 

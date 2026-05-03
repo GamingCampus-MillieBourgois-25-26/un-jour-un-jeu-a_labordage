@@ -10,6 +10,7 @@
 #include "Demo/Player.h"
 #include "Runner/Player.h"
 #include "Runner/CollisionManager.h"
+#include "Runner/R_Level.h"
 #include <iostream>
 
 
@@ -33,6 +34,15 @@ Runner::RunnerScene::RunnerScene() : Scene("Scene courir") {
 	player->CreateComponent<SquareCollider>(render);
 	player->CreateComponent<CollisionManager>();
 
+	AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
+	GameObject* flur = CreateGameObject("Flur");
+	RectangleShapeRenderer* floor1 = flur->CreateComponent<RectangleShapeRenderer>();
+	floor1->SetColor(sf::Color(128, 128, 128));
+	floor1->SetSize(Maths::Vector2f(1080, 100));
+	flur->SetPosition(Maths::Vector2f(0, 700));
+
+	GameObject* obstacles = CreateGameObject("Obstacles");
+	obstacles->CreateComponent<R_Level>();
 
 	
 	RectangleShapeRenderer* rec =  obj->CreateComponent<RectangleShapeRenderer>();

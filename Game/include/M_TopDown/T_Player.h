@@ -21,7 +21,7 @@ namespace M_TopDown
         {
             Maths::Vector2<float> position = GetOwner()->GetPosition();
 
-            // --- Déplacement ZQSD ---
+        
             if (InputModule::GetKey(sf::Keyboard::Key::D)) position.x += speed * _delta_time;
             if (InputModule::GetKey(sf::Keyboard::Key::Q)) position.x -= speed * _delta_time;
             if (InputModule::GetKey(sf::Keyboard::Key::Z)) position.y -= speed * _delta_time;
@@ -29,13 +29,13 @@ namespace M_TopDown
 
             GetOwner()->SetPosition(position);
 
-            // --- Quitter ---
+        
             if (InputModule::GetKeyDown(sf::Keyboard::Key::Escape))
             {
                 Engine::GetInstance()->RequestQuit();
             }
 
-            // --- Tir vers la souris (clic gauche) ---
+         
             fireTimer += _delta_time;
             if (InputModule::GetMouseButton(sf::Mouse::Button::Left) && fireTimer >= fireRate)
             {
@@ -61,7 +61,7 @@ namespace M_TopDown
         SpawnBulletFn spawnBullet;
 
         float speed = 250.f;
-        float fireRate = 0.2f;   // 5 tirs/seconde
+        float fireRate = 0.2f;  
         float fireTimer = 0.f;
     };
 }

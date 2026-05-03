@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CollisionManager.h"
 
-// Tous les includes lourds ici, pas dans le .h
+
 #include "Core/Scene.h"
 #include "Core/GameObject.h"
 #include "SquareCollider.h"
@@ -29,7 +29,7 @@ void Runner::CollisionManager::Update(float deltatime)
 	position.y += velocity.y * deltatime;
 	position.x = 200;
 
-	/*	player->SetPosition(position);*/
+	
 
 	if (prevVelocityY < 0.f && velocity.y >= 0.f) {
 		isBackflipping = true;
@@ -43,6 +43,7 @@ void Runner::CollisionManager::Update(float deltatime)
 
 	if (isOnGround) {
 		velocity.y = 0;
+		
 		isBackflipping = false;
 		currentRotation = 0.f;
 		player->SetRotation(sf::degrees(0.f));

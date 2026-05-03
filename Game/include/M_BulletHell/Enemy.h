@@ -22,7 +22,6 @@ namespace M_BulletHell {
 	public:
 		using SpawnBulletFn = std::function<void(const Maths::Vector2f&, const Maths::Vector2f&)>;
 
-		// _startupDelay : délai (en secondes) avant que l'enemy commence à tirer
 		Enemy(float _fireInterval, SpawnBulletFn _spawnFn, float _startupDelay = 3.f);
 
 		void Update(float _deltatime)override;
@@ -54,7 +53,7 @@ namespace M_BulletHell {
 		float spireAngle = 0.f;
 		int patternStep = 0;
 
-		// Délai avant que l'enemy commence à tirer
+	
 		float startupDelay;
 		float startupTimer = 0.f;
 

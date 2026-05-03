@@ -1,22 +1,21 @@
-﻿#pragma once
+#pragma once
 
 #include "Core/Component.h"
 
 #include <SFML/Graphics/Color.hpp>
 #include <string>
-#include <vector>
 
-class GameObject;
 class TextRenderer;
 
-namespace M_TopDown
+namespace Platformer
 {
-    class CollisionManager : public Component
+    class PlatformerLevel : public Component
     {
     public:
         void Start() override;
         void Update(float _delta_time) override;
 
+        void SetTimeLimit(float _seconds) { timeLimit = _seconds; }
         bool HasWon() const { return won; }
         bool IsGameOver() const { return gameOver; }
 
@@ -25,15 +24,12 @@ namespace M_TopDown
         void UpdateTimerText();
         void EndGame(const std::string& _message, sf::Color _color);
 
-        bool gameOver = false;
-        bool won = false;
-        bool everSawEnemies = false;
-
-        float elapsedTime = 0.f;
+        float elapsed = 0.f;
+        float timeLimit = 60.f;
         int lastDisplayedSecond = -1;
 
-        std::vector<GameObject*> bullets;
-        std::vector<GameObject*> enemies;
+        bool won = false;
+        bool gameOver = false;
 
         TextRenderer* timerText = nullptr;
         TextRenderer* resultText = nullptr;

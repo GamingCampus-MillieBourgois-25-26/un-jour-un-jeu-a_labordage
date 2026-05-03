@@ -14,12 +14,12 @@ M_BulletHell::BulletHelScene::BulletHelScene() : Scene("BulletHell")
     AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
     Texture* logo_texture = assets_module->LoadAsset<Texture>("fish_red.png");
 
-    // --- Ennemi ---
+  
     GameObject* enemy = CreateGameObject("Enemy");
     GameObject* player = CreateGameObject("Player");
 
     enemy->CreateComponent<Enemy>(
-        1.0f, // fireInterval
+        1.0f, 
         [this](const Maths::Vector2f& pos, const Maths::Vector2f& dir)
         {
             GameObject* bullet = CreateGameObject("Bullet");
@@ -31,20 +31,20 @@ M_BulletHell::BulletHelScene::BulletHelScene() : Scene("BulletHell")
             auto* renderer = bullet->CreateComponent<RectangleShapeRenderer>();
             bullet->CreateComponent<Bullets>(dir, renderer, BulletOwner::Enemy, 300.f);
 
-            // SpriteRenderer pour le visuel + récup pour le collider
+            
             SpriteRenderer* bullet_sprite = bullet->CreateComponent<SpriteRenderer>(logo_texture);
 
-            // Collider sur la bullet, basé sur la taille du sprite
+           
             bullet->CreateComponent<SquareCollider>(bullet_sprite);
         },
-        3.0f  // startupDelay : 3 secondes avant que l'enemy commence à tirer
+        3.0f  
     );
 
-    // --- Player ---
+   
     player->CreateComponent<Player>();
     SpriteRenderer* player_sprite = player->CreateComponent<SpriteRenderer>(logo_texture);
 
-    // Collider du player
+    
     player->CreateComponent<SquareCollider>(player_sprite);
 
     

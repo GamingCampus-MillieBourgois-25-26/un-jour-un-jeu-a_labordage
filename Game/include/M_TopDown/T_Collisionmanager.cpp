@@ -1,13 +1,66 @@
 ﻿#include "pch.h"
-#include "T_CollisionManager.h"
+#include "T_Collisionmanager.h"
 
 #include "Core/Scene.h"
 #include "Core/GameObject.h"
 #include "SquareCollider.h"
+#include "TextRenderer.h"
 #include "T_Bullets.h"
 #include "T_Enemy.h"
 
 #include <iostream>
+
+void M_TopDown::CollisionManager::Start()
+{
+    Component::Start();
+    CreateUI();
+    UpdateTimerText();
+}
+
+void M_TopDown::CollisionManager::CreateUI()
+{
+    Scene* scene = GetOwner()->GetScene();
+
+    GameObject* timer_go = scene->CreateGameObject("UI_Timer");
+    timer_go->SetPosition(Maths::Vector2f(10.f, 10.f));
+    timerText = timer_go->CreateComponent<TextRenderer>("Temps : 0s");
+    timerText->SetCharacterSize(28);
+    timerText->SetColor(sf::Color::White);
+
+    GameObject* result_go = scene->CreateGameObject("UI_Result");
+    result_go->SetPosition(Maths::Vector2f(140.f, 250.f));
+    resultText = result_go->CreateComponent<TextRenderer>("");
+    resultText->SetCharacterSize(50);
+}
+
+void M_TopDown::CollisionManager::UpdateTimerText()
+{
+    if (timerText == nullptr) return;
+
+    const int seconds = static_cast<int>(elapsedTime);
+    if (seconds == lastDisplayedSecond) return;
+
+    timerText->SetText("Temps : " + std::to_string(seconds) + "s");
+    lastDisplayedSecond = seconds;
+}
+
+void M_TopDown::CollisionManager::EndGame(const std::string& _message, sf::Color _color)
+{
+    gameOver = true;
+    if (resultText != nullptr)
+    {
+        resultText->SetText(_message);
+        resultText->SetColor(_color);
+    }
+    std::cout << "[TopDown] " << _message << std::endl;
+
+    
+    for (const auto& go : GetOwner()->GetScene()->GetGameObjects())
+    {
+        if (go->GetName() == "Enemy" || go->GetName() == "Bullet")
+            go->MarkForDeletion();
+    }
+}
 
 void M_TopDown::CollisionManager::Update(float _delta_time)
 {
@@ -17,36 +70,31 @@ void M_TopDown::CollisionManager::Update(float _delta_time)
     SquareCollider* player_collider = player->GetComponent<SquareCollider>();
     if (player_collider == nullptr) return;
 
-    // 1. Récupérer toutes les bullets et tous les enemies de la scène
+    
+    elapsedTime += _delta_time;
+    UpdateTimerText();
+
     bullets.clear();
     enemies.clear();
     for (const auto& go : player->GetScene()->GetGameObjects())
     {
         if (go->IsMarkedForDeletion()) continue;
-
         const std::string& name = go->GetName();
-        if (name == "Bullet")        bullets.push_back(go.get());
-        else if (name == "Enemy")    enemies.push_back(go.get());
+        if (name == "Bullet")     bullets.push_back(go.get());
+        else if (name == "Enemy") enemies.push_back(go.get());
     }
 
-    if (!enemies.empty())
-        everSawEnemies = true;
+    if (!enemies.empty()) everSawEnemies = true;
 
-    // 2. Condition de victoire : on a vu des enemies, et il n'en reste plus
+    
     if (everSawEnemies && enemies.empty())
     {
-        std::cout << "VICTOIRE ! Tous les enemies ont ete elimines !" << std::endl;
         won = true;
-        gameOver = true;
-
-        // Nettoyer les bullets restantes
-        for (GameObject* b : bullets)
-            b->MarkForDeletion();
-
+        EndGame("VICTOIRE !", sf::Color::Yellow);
         return;
     }
 
-    // 3. Traiter les collisions de chaque bullet
+   
     for (GameObject* bullet : bullets)
     {
         SquareCollider* bullet_collider = bullet->GetComponent<SquareCollider>();
@@ -57,21 +105,17 @@ void M_TopDown::CollisionManager::Update(float _delta_time)
 
         if (bullet_comp->GetBulletOwner() == BulletOwner::Enemy)
         {
-            // Bullet enemy → check vs player
+            
             if (SquareCollider::IsColliding(*player_collider, *bullet_collider))
             {
-                std::cout << "DEFAITE ! Le player a ete touche." << std::endl;
-
+                EndGame("GAME OVER", sf::Color::Red);
                 player->MarkForDeletion();
-                bullet->MarkForDeletion();
-
-                gameOver = true;
                 return;
             }
         }
-        else // BulletOwner::Player
+        else
         {
-            // Bullet player → check vs chaque enemy
+           
             for (GameObject* enemy : enemies)
             {
                 if (enemy->IsMarkedForDeletion()) continue;
@@ -86,8 +130,8 @@ void M_TopDown::CollisionManager::Update(float _delta_time)
                     else                        enemy->MarkForDeletion();
 
                     bullet->MarkForDeletion();
-                    std::cout << "Enemy elimine !" << std::endl;
-                    break; // une bullet ne tue qu'un seul enemy
+                    std::cout << "[TopDown] Enemy elimine !" << std::endl;
+                    break;
                 }
             }
         }

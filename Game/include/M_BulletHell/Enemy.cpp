@@ -10,7 +10,7 @@ M_BulletHell::Enemy::Enemy(float _fireinterval, SpawnBulletFn _spawnFn, float _s
 void M_BulletHell::Enemy::Update(float _deltatime) {
 	if (dead) return;
 
-	// --- Délai avant que les patterns commencent ---
+
 	if (startupTimer < startupDelay)
 	{
 		startupTimer += _deltatime;

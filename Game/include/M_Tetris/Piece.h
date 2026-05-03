@@ -21,13 +21,12 @@ namespace Tetris
         void Awake() override;
 
         bool TryMove(int _dx, int _dy);
-        bool TryRotate(int _dir);   // -1 (CCW) ou +1 (CW)
-        bool TryFall();             // descend d'1 case ; false si bloqué
+        bool TryRotate(int _dir);   
+        bool TryFall();             
 
-        // Verrouille la pièce dans la grille (transfert des blocs) puis détruit la pièce
+      
         void Lock();
 
-        // Calcule les 4 cases occupées dans un état (col, row, rotation) donné
         void GetCellsAt(int _col, int _row, int _rotation, Maths::Vector2i _out[4]) const;
         void GetCells(Maths::Vector2i _out[4]) const { GetCellsAt(col, row, rotation, _out); }
 

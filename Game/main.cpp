@@ -17,8 +17,8 @@ int main(const int _argc, const char** _argv)
     engine->Init(_argc, _argv);
 
     engine->GetModuleManager()->GetModule<SceneModule>()->RegisterSceneCreationFunction<Demo::DemoScene>();
-    //engine->GetModuleManager()->GetModule<SceneModule>()->RegisterSceneCreationFunction<Platformer::Platformer>();
-    //engine->GetModuleManager()->GetModule<SceneModule>()->RegisterSceneCreationFunction<M_BulletHell::BulletHelScene>();
+    engine->GetModuleManager()->GetModule<SceneModule>()->RegisterSceneCreationFunction<Platformer::Platformer>();
+    engine->GetModuleManager()->GetModule<SceneModule>()->RegisterSceneCreationFunction<M_BulletHell::BulletHelScene>();
     engine->GetModuleManager()->GetModule<SceneModule>()->RegisterSceneCreationFunction<M_TopDown::TopDownScene>();
     engine->GetModuleManager()->GetModule<SceneModule>()->RegisterSceneCreationFunction<Runner::RunnerScene>();
     engine->GetModuleManager()->GetModule<SceneModule>()->RegisterSceneCreationFunction<Tetris::M_TetrisScene>();

@@ -6,7 +6,7 @@
 class Shooter : public Component
 {
 public:
-    // Paramètres du pattern
+    
     int   bulletsPerBurst = 8;
     int   wavesPerBurst = 3; 
     float timeBetweenWaves = 0.15f; 
