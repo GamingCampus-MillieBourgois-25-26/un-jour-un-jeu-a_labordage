@@ -1,7 +1,8 @@
 #include "BulletHelScene.h"
 #include "M_BulletHell/Enemy.h"
-#include "M_BulletHell/Player.h"
+#include "M_BulletHell/B_Player.h"
 #include "M_BulletHell/Bullets.h"
+#include "M_BulletHell/B_CollisionManager.h"
 #include "AssetsModule.h"
 #include "SpriteRenderer.h"
 #include "SquareCollider.h"
@@ -15,7 +16,8 @@ M_BulletHell::BulletHelScene::BulletHelScene() : Scene("BulletHell")
 
     // --- Ennemi ---
     GameObject* enemy = CreateGameObject("Enemy");
-	GameObject* player = CreateGameObject("Player");
+    GameObject* player = CreateGameObject("Player");
+
     enemy->CreateComponent<Enemy>(
         1.0f, // fireInterval
         [this](const Maths::Vector2f& pos, const Maths::Vector2f& dir)
@@ -25,17 +27,31 @@ M_BulletHell::BulletHelScene::BulletHelScene() : Scene("BulletHell")
 
             AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
             Texture* logo_texture = assets_module->LoadAsset<Texture>("fish_red.png");
+
             auto* renderer = bullet->CreateComponent<RectangleShapeRenderer>();
             bullet->CreateComponent<Bullets>(dir, renderer, BulletOwner::Enemy, 300.f);
-            bullet->CreateComponent<SpriteRenderer>(logo_texture);
-        }
+
+            // SpriteRenderer pour le visuel + récup pour le collider
+            SpriteRenderer* bullet_sprite = bullet->CreateComponent<SpriteRenderer>(logo_texture);
+
+            // Collider sur la bullet, basé sur la taille du sprite
+            bullet->CreateComponent<SquareCollider>(bullet_sprite);
+        },
+        3.0f  // startupDelay : 3 secondes avant que l'enemy commence à tirer
     );
 
-	player->CreateComponent<Player>();
-	player->CreateComponent<SpriteRenderer>(logo_texture);
-    enemy->CreateComponent<SpriteRenderer>(logo_texture);
-	enemy->SetPosition({ 300.f, 50.f });
+    // --- Player ---
+    player->CreateComponent<Player>();
+    SpriteRenderer* player_sprite = player->CreateComponent<SpriteRenderer>(logo_texture);
 
-   
+    // Collider du player
+    player->CreateComponent<SquareCollider>(player_sprite);
+
     
+    CollisionManager* coll_manager = player->CreateComponent<CollisionManager>();
+    coll_manager->SetSurvivalDuration(60.f);  
+
+  
+    enemy->CreateComponent<SpriteRenderer>(logo_texture);
+    enemy->SetPosition({ 300.f, 50.f });
 }

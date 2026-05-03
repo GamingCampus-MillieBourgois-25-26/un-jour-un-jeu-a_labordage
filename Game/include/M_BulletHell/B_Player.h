@@ -39,7 +39,7 @@ namespace M_BulletHell
             }
         }
 
-        float speed = 100.0f;
+        float speed = 300.0f;
 
 
     };

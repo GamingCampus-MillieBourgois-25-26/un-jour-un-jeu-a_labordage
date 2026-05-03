@@ -12,9 +12,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\M_Tetris\Grid.cpp" />
+    <ClCompile Include="include\M_Tetris\Piece.cpp" />
+    <ClCompile Include="include\M_Tetris\TetrisManager.cpp" />
+    <ClCompile Include="include\M_Tetris\TetrominoData.cpp" />
+    <ClCompile Include="include\M_TopDown\T_Collisionmanager.cpp" />
+    <ClCompile Include="include\M_TopDown\T_Bullets.cpp" />
+    <ClCompile Include="include\M_TopDown\T_Enemy.cpp" />
+    <ClCompile Include="include\M_BulletHell\B_Collisionmanager.cpp" />
     <ClCompile Include="include\M_BulletHell\Bullets.cpp" />
     <ClCompile Include="include\M_BulletHell\Enemy.cpp" />
-    <ClCompile Include="include\M_BulletHell\Player.cpp" />
+    <ClCompile Include="include\M_BulletHell\B_Player.cpp" />
+    <ClCompile Include="include\M_TopDown\T_Player.cpp" />
     <ClCompile Include="Scenes\M_BulletHell\BulletHelScene.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -26,9 +35,18 @@
     <ClCompile Include="include\Demo\TileSpawner.cpp" />
   </ItemGroup>
   <ItemGroup Label="Demo">
+    <ClInclude Include="include\M_Tetris\Grid.h" />
+    <ClInclude Include="include\M_Tetris\Piece.h" />
+    <ClInclude Include="include\M_Tetris\TetrisManager.h" />
+    <ClInclude Include="include\M_Tetris\TetrominoData.h" />
+    <ClInclude Include="include\M_TopDown\T_Collisionmanager.h" />
+    <ClInclude Include="include\M_TopDown\T_Bullets.h" />
+    <ClInclude Include="include\M_TopDown\T_Enemy.h" />
+    <ClInclude Include="include\M_BulletHell\B_Collisionmanager.h" />
     <ClInclude Include="include\M_BulletHell\Bullets.h" />
     <ClInclude Include="include\M_BulletHell\Enemy.h" />
-    <ClInclude Include="include\M_BulletHell\Player.h" />
+    <ClInclude Include="include\M_BulletHell\B_Player.h" />
+    <ClInclude Include="include\M_TopDown\T_Player.h" />
     <ClInclude Include="Scenes\M_BulletHell\BulletHelScene.h" />
     <ClInclude Include="include\Demo\TileCounter.h" />
     <ClInclude Include="include\Demo\TileSpawner.h" />
@@ -143,20 +161,24 @@
     <ClCompile Include="include\BulletHell\Bullet.cpp" />
     <ClCompile Include="include\Runner\Player.cpp" />
     <ClCompile Include="include\Platformer\Playere.cpp" />
+    <ClCompile Include="Scenes\M_Tetris\M_TetrisScene.cpp" />
     <ClCompile Include="Scenes\Platformer\Platformer.cpp" />
     <ClCompile Include="Scenes\BulletHell\BulletScene.cpp" />
     <ClCompile Include="include\Tetris\Shapes.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="include\Demo\Mechant.cpp" />
     <ClCompile Include="Scenes\Demo\DemoScene.cpp" />
+    <ClCompile Include="Scenes\Runner\RunnerScene.cpp" />
     <ClCompile Include="Scenes\Tetris\TetrisScene.cpp" />
     <ClCompile Include="include\BulletHell\Shooter.cpp" />
+    <ClCompile Include="Scenes\M_TopDown\Topdownscene.cpp" />
     <ClCompile Include="WaveManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\BulletHell\Bullet.h" />
     <ClInclude Include="include\Runner\Player.h" />
     <ClInclude Include="include\Platformer\Playere.h" />
+    <ClInclude Include="Scenes\M_Tetris\M_TetrisScene.h" />
     <ClInclude Include="Scenes\Platformer\Platformer.h" />
     <ClInclude Include="Scenes\BulletHell\BulletScene.h" />
     <ClInclude Include="include\Demo\Bullet.h" />
@@ -165,8 +187,10 @@
     <ClInclude Include="include\Demo\Mechant.h" />
     <ClInclude Include="include\Tetris\Shapes.h" />
     <ClInclude Include="Scenes\Demo\DemoScene.h" />
+    <ClInclude Include="Scenes\Runner\RunnerScene.h" />
     <ClInclude Include="Scenes\Tetris\TetrisScene.h" />
     <ClInclude Include="include\BulletHell\Shooter.h" />
+    <ClInclude Include="Scenes\M_TopDown\Topdownscene.h" />
     <ClInclude Include="WaveManager.h" />
   </ItemGroup>
   <ItemGroup>

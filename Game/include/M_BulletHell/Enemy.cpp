@@ -2,13 +2,20 @@
 #include "Enemy.h"
 #include "GameObject.h"
 
-M_BulletHell::Enemy::Enemy(float _fireinterval, SpawnBulletFn _spawnFn)
-	: fireInterval(_fireinterval), spawnBullet(std::move(_spawnFn)) // ✅
+M_BulletHell::Enemy::Enemy(float _fireinterval, SpawnBulletFn _spawnFn, float _startupDelay)
+	: spawnBullet(std::move(_spawnFn)), fireInterval(_fireinterval), startupDelay(_startupDelay)
 {
 }
 
 void M_BulletHell::Enemy::Update(float _deltatime) {
-	if (dead)return;
+	if (dead) return;
+
+	// --- Délai avant que les patterns commencent ---
+	if (startupTimer < startupDelay)
+	{
+		startupTimer += _deltatime;
+		return;
+	}
 
 	fireTimer += _deltatime;
 

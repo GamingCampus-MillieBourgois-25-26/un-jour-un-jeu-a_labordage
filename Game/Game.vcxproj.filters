@@ -19,9 +19,21 @@
     <ClCompile Include="include\BulletHell\Shooter.cpp" />
     <ClCompile Include="WaveManager.cpp" />
     <ClCompile Include="Scenes\M_BulletHell\BulletHelScene.cpp" />
-    <ClCompile Include="include\M_BulletHell\Player.cpp" />
+    <ClCompile Include="include\M_BulletHell\B_Player.cpp" />
     <ClCompile Include="include\M_BulletHell\Enemy.cpp" />
     <ClCompile Include="include\M_BulletHell\Bullets.cpp" />
+    <ClCompile Include="include\M_BulletHell\B_Collisionmanager.cpp" />
+    <ClCompile Include="include\M_TopDown\T_Player.cpp" />
+    <ClCompile Include="include\M_TopDown\T_Enemy.cpp" />
+    <ClCompile Include="include\M_TopDown\T_Bullets.cpp" />
+    <ClCompile Include="include\M_TopDown\T_Collisionmanager.cpp" />
+    <ClCompile Include="Scenes\M_TopDown\Topdownscene.cpp" />
+    <ClCompile Include="Scenes\Runner\RunnerScene.cpp" />
+    <ClCompile Include="include\M_Tetris\Grid.cpp" />
+    <ClCompile Include="include\M_Tetris\Piece.cpp" />
+    <ClCompile Include="include\M_Tetris\TetrisManager.cpp" />
+    <ClCompile Include="include\M_Tetris\TetrominoData.cpp" />
+    <ClCompile Include="Scenes\M_Tetris\M_TetrisScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Demo\TileCounter.h" />
@@ -44,9 +56,21 @@
     <ClInclude Include="include\BulletHell\Shooter.h" />
     <ClInclude Include="WaveManager.h" />
     <ClInclude Include="Scenes\M_BulletHell\BulletHelScene.h" />
-    <ClInclude Include="include\M_BulletHell\Player.h" />
+    <ClInclude Include="include\M_BulletHell\B_Player.h" />
     <ClInclude Include="include\M_BulletHell\Enemy.h" />
     <ClInclude Include="include\M_BulletHell\Bullets.h" />
+    <ClInclude Include="include\M_BulletHell\B_Collisionmanager.h" />
+    <ClInclude Include="include\M_TopDown\T_Player.h" />
+    <ClInclude Include="include\M_TopDown\T_Enemy.h" />
+    <ClInclude Include="include\M_TopDown\T_Bullets.h" />
+    <ClInclude Include="include\M_TopDown\T_Collisionmanager.h" />
+    <ClInclude Include="Scenes\M_TopDown\Topdownscene.h" />
+    <ClInclude Include="Scenes\Runner\RunnerScene.h" />
+    <ClInclude Include="include\M_Tetris\Grid.h" />
+    <ClInclude Include="include\M_Tetris\Piece.h" />
+    <ClInclude Include="include\M_Tetris\TetrisManager.h" />
+    <ClInclude Include="include\M_Tetris\TetrominoData.h" />
+    <ClInclude Include="Scenes\M_Tetris\M_TetrisScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
