@@ -12,6 +12,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\Demo\Collision.cpp" />
+    <ClCompile Include="include\Demo\Mechant.cpp" />
     <ClCompile Include="include\Runner\Level.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -19,11 +21,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup Label="Demo">
-    <ClCompile Include="include\Demo\TileSpawner.cpp" />
-  </ItemGroup>
-  <ItemGroup Label="Demo">
-    <ClInclude Include="include\Demo\TileCounter.h" />
-    <ClInclude Include="include\Demo\TileSpawner.h" />
+    <ClInclude Include="include\Demo\Collision.h" />
+    <ClInclude Include="include\Demo\Bullet.h" />
+    <ClInclude Include="include\Demo\BulletPool.h" />
+    <ClInclude Include="include\Demo\Mechant.h" />
+    <ClInclude Include="include\Demo\Player.h" />
     <ClInclude Include="include\pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -118,29 +120,23 @@
     <ClCompile Include="include\BulletHell\Bullet.cpp" />
     <ClCompile Include="Scenes\Runner\RunnerScene.cpp" />
     <ClCompile Include="Scenes\BulletHell\BulletScene.cpp" />
-    <ClCompile Include="include\Demo\Tile.cpp" />
     <ClCompile Include="include\Tetris\Shapes.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="include\Demo\Mechant.cpp" />
     <ClCompile Include="Scenes\Demo\DemoScene.cpp" />
     <ClCompile Include="Scenes\Tetris\TetrisScene.cpp" />
     <ClCompile Include="include\BulletHell\Shooter.cpp" />
-    <ClCompile Include="WaveManager.cpp" />
+    <ClCompile Include="include\Demo\WaveManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\BulletHell\Bullet.h" />
     <ClInclude Include="include\Runner\Level.h" />
     <ClInclude Include="Scenes\Runner\RunnerScene.h" />
     <ClInclude Include="Scenes\BulletHell\BulletScene.h" />
-    <ClInclude Include="include\Demo\Bullet.h" />
-    <ClInclude Include="include\Demo\Player.h" />
-    <ClInclude Include="include\Demo\Tile.h" />
-    <ClInclude Include="include\Demo\Mechant.h" />
     <ClInclude Include="include\Tetris\Shapes.h" />
     <ClInclude Include="Scenes\Demo\DemoScene.h" />
     <ClInclude Include="Scenes\Tetris\TetrisScene.h" />
     <ClInclude Include="include\BulletHell\Shooter.h" />
-    <ClInclude Include="WaveManager.h" />
+    <ClInclude Include="include\Demo\WaveManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

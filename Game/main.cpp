@@ -12,7 +12,7 @@ int main(const int _argc, const char** _argv)
 
     engine->Init(_argc, _argv);
 
-    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<Runner::RunnerScene>();
+    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<Demo::DemoScene>();
     
     
     engine->Run();
